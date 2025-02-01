@@ -1,0 +1,27 @@
+{
+    "name": "minecraft-forge-mod-template",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "mounts": [
+        {
+            "source": "${localEnv:USERPROFILE}/.ssh",
+            "target": "/root/.ssh",
+            "type": "bind"
+        }
+    ],
+    "forwardPorts": [],
+    "postCreateCommand": "./.devcontainer/scripts/init.sh",
+    "postStartCommand": "./.devcontainer/scripts/update.sh",
+    "postAttachCommand": "./.devcontainer/scripts/status.sh",
+    "customizations": {
+        "vscode": {
+            "settings": {},
+            "extensions": []
+        }
+    },
+    "runArgs": [
+        "--name", "minecraft-forge-mod-template",
+        "--env-file", ".devcontainer/.env"
+    ]
+}
