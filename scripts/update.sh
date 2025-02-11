@@ -15,3 +15,8 @@ echo 'Git updated!'
 echo 'Updating Java...'
 apt-get -y install default-jdk
 echo 'Java updated!'
+
+# Update Wget
+echo 'Updating Wget...'
+apt-get -y install wget
+echo 'Wget updated!'

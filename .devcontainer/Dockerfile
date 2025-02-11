@@ -13,3 +13,6 @@ RUN apt-get -y install default-jdk
 # Populate the environment variables used by Java
 ENV JAVA_HOME=/usr/lib/jvm/default-java
 ENV PATH=$PATH:$JAVA_HOME/bin
+
+# Install Wget
+RUN apt-get -y install wget

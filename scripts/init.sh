@@ -12,3 +12,22 @@ git config --global user.signingkey $HOME/.ssh/id_ed25519.pub
 git config --global gpg.format ssh
 git config --global commit.gpgsign true
 echo 'Git configured!'
+
+
+
+
+
+
+
+
+
+
+# Fetch the latest version URL dynamically
+FORGE_SDK_URL=$(curl -s https://files.minecraftforge.net/net/minecraftforge/forge/ | grep -oP 'https://.+forge.+mdk.*\.zip' | sort -rV | head -n 1)
+
+# Construct the full URL
+FULL_URL="${BASE_URL}${LATEST_URL}"
+
+# Use wget to download the latest version of the Minecraft Forge SDK
+echo "Downloading the latest version of the Minecraft Forge SDK..."
+wget -O forge-installer.jar $FULL_URL
