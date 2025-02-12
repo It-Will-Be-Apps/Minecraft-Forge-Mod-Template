@@ -2,21 +2,6 @@
 .gradle/
 build/
 
-# Ignore Gradle wrapper files
-gradle/wrapper/gradle-wrapper.jar
-
-# Ignore IntelliJ IDEA project files
-.idea/
-*.iml
-
-# Ignore Eclipse project files
-.project
-.classpath
-.settings/
-
-# Ignore VS Code project files
-.vscode/
-
 # Ignore log files
 *.log
 
@@ -24,10 +9,6 @@ gradle/wrapper/gradle-wrapper.jar
 *.tmp
 *.swp
 *~
-
-# Ignore OS-specific files
-.DS_Store
-Thumbs.db
 
 # Ignore Minecraft specific files
 run/

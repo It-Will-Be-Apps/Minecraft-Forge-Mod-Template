@@ -13,21 +13,30 @@ git config --global gpg.format ssh
 git config --global commit.gpgsign true
 echo 'Git configured!'
 
+# Install Forge MDK
+echo 'Installing and configuring Forge MDK...'
 
+# Download and unzip the latest version
+mkdir forge-mdk
+FORGE_MDK_URL=$(curl -s https://files.minecraftforge.net/net/minecraftforge/forge/ | grep -oP 'https://.+forge.+mdk.*\.zip' | sort -rV | head -n 1)
+curl -o forge-mdk/forge-mdk.zip https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.4-54.0.35/forge-1.21.4-54.0.35-mdk.zip
+unzip -d forge-mdk forge-mdk/forge-mdk.zip
 
+# Remove unnecessary files
+rm forge-mdk/forge-mdk.zip
+rm forge-mdk/.gitignore
+rm forge-mdk/changelog.txt
+rm forge-mdk/CREDITS.txt
+rm forge-mdk/LICENSE.txt
+rm forge-mdk/README.txt
 
+# Copy the remaining files to the workspace
+cp -a forge-mdk/. .
 
+# Remove the downloaded files
+rm -rf forge-mdk
 
+# Generate the VSCode launch configurations
+./gradlew :genVsCodeRuns
 
-
-
-
-# Fetch the latest version URL dynamically
-FORGE_SDK_URL=$(curl -s https://files.minecraftforge.net/net/minecraftforge/forge/ | grep -oP 'https://.+forge.+mdk.*\.zip' | sort -rV | head -n 1)
-
-# Construct the full URL
-FULL_URL="${BASE_URL}${LATEST_URL}"
-
-# Use wget to download the latest version of the Minecraft Forge SDK
-echo "Downloading the latest version of the Minecraft Forge SDK..."
-wget -O forge-installer.jar $FULL_URL
+echo 'Forge MDK installed and configured!'

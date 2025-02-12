@@ -14,5 +14,8 @@ RUN apt-get -y install default-jdk
 ENV JAVA_HOME=/usr/lib/jvm/default-java
 ENV PATH=$PATH:$JAVA_HOME/bin
 
-# Install Wget
-RUN apt-get -y install wget
+# Install curl
+RUN apt-get -y install curl
+
+#Install unzip
+RUN apt-get -y install unzip
